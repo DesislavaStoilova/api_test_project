@@ -70,6 +70,16 @@ allure serve reports/allure-results
 
 
 
+**Testcases:**
+```bash
+| Test Case ID | Test Title                              | Description                                        | Steps                                                                                                                                              | Expected Result                                      |
+|--------------|-----------------------------------------|----------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------|
+| TC1          | Test Get Fact by Fact ID                | Tests getting a fact by its ID                     | 1. Send a GET request to `/facts/random` with `amount=10` to get 10 random facts.<br> 2. Pick one fact at random and get its ID.<br> 3. Send a GET request to `/facts/{factID}`.<br> 4. Verify the status code.<br> 5. Verify that the fact ID in the response matches the selected fact ID. | The response has a status code of 200 and contains the correct fact ID. |
+| TC2          | Test Get Random Fact                    | Tests getting a random animal fact without params  | 1. Send a GET request to `/facts/random` without any parameters.<br>2. Validate the status code.<br>3. Validate the animal type and the number of facts returned. | Status code 200, animal type is `cat` (default), and the amount is `1` (default). |
+| TC3          | Test Get Random Fact                    | Tests getting a random animal fact with animal type| 1. Send a GET request to `/facts/random` with `animal_type=dog`.<br>2. Validate the status code.<br>3. Validate the returned animal type and the amount. | Status code 200, animal type is `dog`, and the amount is `1` (default). |
+| TC4          | Test Get Random Fact                    | Tests getting multiple random animal facts by specifying an amount | 1. Send a GET request to `/facts/random` with `amount=5`.<br>2. Validate the status code.<br>3. Validate the animal type and the number of facts returned. | Status code 200, animal type is `cat` (default), and the amount is `5`. |
+| TC5          | Test Get Random Fact                    | Tests getting multiple random animal facts by specifying an animal type and amount | 1. Send a GET request to `/facts/random` with `animal_type=dog` and `amount=5`.<br>2. Validate the status code.<br>3. Validate the animal type and the number of facts returned. | Status code 200, animal type is `dog`, and the amount is `5`. | 
+```
 
 
 
