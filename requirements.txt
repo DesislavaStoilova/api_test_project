@@ -1,0 +1,7 @@
+allure-pytest==2.13.5
+allure-python-commons==2.13.5
+pytest==8.1.1
+PyYAML==6.0.1
+requests~=2.32.3
+pydantic~=2.9.2
+
