@@ -13,6 +13,8 @@ Create and activate a Virtual Environment
 Run the following command to create a virtual environment
 ```bash
 python -m venv venv
+or
+python3 -m venv venv
 ```
 Run the following command activate it
 ```bash
@@ -21,12 +23,14 @@ source venv/bin/activate
 Install Requirements
 Install all required dependencies listed in the requirements.txt file:
 ```bash
-pip install -r requirements.txt or pip3 install -r requirements.txt
+pip install -r requirements.txt 
+or 
+pip3 install -r requirements.txt
 ```
 Run the tests
 To run tests using pytest and allure, use the following command:
 ```bash
-pytest --alluredir=reports/allure-results
+python -m pytest --alluredir=reports/allure-results
 ```
 Open the generated report
 To open the generated allure report run the following command:
@@ -75,7 +79,7 @@ allure serve reports/allure-results
 |--------------|-----------------------------------------|----------------------------------------------------|------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
 | Test Case ID | Test Title                              | Description                                        | Steps                                                                                                | Expected Result                                                         |
 |--------------|-----------------------------------------|----------------------------------------------------|------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| TC1          | Test Get Fact by Fact ID                | Tests getting a fact by its ID                     | - Send a GET request to `/facts/random` with `amount=10` to get 10 random facts.                     | The response has a status code of 200 and contains the correct fact ID. |                                        
+| TC1          | Test Get Fact by Fact ID                | Tests getting a fact by its ID                     | - Send a GET request to `/facts/random` with `amount=10` to get 10 random facts.                     | The response has a status code of 200 and contains the correct fact ID. |
 |              |                                         |                                                    | - Pick one fact at random and get its ID.                                                            |                                                                         | 
 |              |                                         |                                                    | - Send a GET request to `/facts/{factID}`.                                                           |                                                                         |
 |              |                                         |                                                    | - Verify the status code.                                                                            |                                                                         |
@@ -98,6 +102,4 @@ allure serve reports/allure-results
 |              |                                         |                                                    | - Validate the animal type and the number of facts returned.                                         |                                                                         |
 |--------------|-----------------------------------------|----------------------------------------------------|------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|                                   
 ```
-
-
 
