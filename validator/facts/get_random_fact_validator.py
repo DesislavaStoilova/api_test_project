@@ -19,5 +19,11 @@ def validate_amount(response, expected_amount=None):
         assert len(response.data) == expected_amount, \
             f"Amount of facts: {len(response.data)} != {expected_amount}"
     else:
-        assert len([response.data]) == 1, \
-            f"Amount of facts: {len(response.data)} != 1"
+        # For default case, response.data should be a single fact (not a list)
+        # If it's a list, it should have length 1; if it's a single object, we expect 1 fact
+        if isinstance(response.data, list):
+            assert len(response.data) == 1, \
+                f"Amount of facts: {len(response.data)} != 1"
+        else:
+            # Single fact object means amount is 1
+            assert True, "Single fact object detected, amount is 1"

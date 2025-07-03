@@ -30,6 +30,10 @@ class ApiGetRandomFact(BaseApi):
                 self.logger.info(f"Successfully fetched random facts")
                 return ApiGetRandomFactResponse(
                     status_code=res.status_code, data=res.json())
+            else:
+                self.logger.warning(f"API returned non-200 status code: {res.status_code}")
+                return ApiGetRandomFactResponse(
+                    status_code=res.status_code, data={"error": f"API returned status code {res.status_code}"})
 
         except Exception as e:
 

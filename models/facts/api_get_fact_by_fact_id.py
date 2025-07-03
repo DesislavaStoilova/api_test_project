@@ -25,6 +25,10 @@ class ApiGetFactByFactID(BaseApi):
                 self.logger.info(f"Successfully fetched fact with ID {fact_id}")
                 return ApiGetFactByFactIDResponse(
                     status_code=res.status_code, data=res.json())
+            else:
+                self.logger.warning(f"API returned non-200 status code: {res.status_code}")
+                return ApiGetFactByFactIDResponse(
+                    status_code=res.status_code, data={"error": f"API returned status code {res.status_code}"})
 
         except Exception as e:
 
